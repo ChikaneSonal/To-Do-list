@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container Styling */
+        .container {
+            text-align: center;
+            background-color: #000000be;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: rgb(231, 233, 98);
+            margin-bottom: 20px;
+        }
+
+        /* Input and Button Styling */
+        input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        button {
+            background-color:rgb(231, 233, 98);
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Item List Styling */
+        .itemlist {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .itemlist li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        
+        .itemlist i {
+            color: #ff6b6b;
+            cursor: pointer;
+        }
+
+        .itemlist i:hover {
+            color: #ff3b3b;
+        }
+</style>
+<body>
+    <div class="container">
+        <h2>To-Do List</h2>
+        <input type="text" id="itemInput" placeholder="Type something...">
+        <button onclick="add()">Add to Wishlist</button>
+        <div class="itemlist">
+
+        </div>
+    </div>
+    <script>
+        let Input = document.getElementById("itemInput");
+        let text = document.querySelector(".itemlist");
+        function add() {
+            if (Input.value == "") {
+                alert("enter the task");
+            }
+            else {
+                let newElement = document.createElement("li");
+                // newElement.innerHTML = `${Input.value} <i onclick="removeItem(this)" class="fa-sharp fa-regular fa-trash"></i>`;
+                newElement.innerHTML = `${Input.value} <i class="fa-sharp fa-solid fa-trash"></i>`;
+
+                // newElement.innerHTML = `${Input.value} "<i onclick="removeItem(this)<i class="fa-sharp fa-regular fa-trash"></i>></i>`;
+                text.appendChild(newElement);
+                Input.value = "";
+
+                newElement.querySelector("i").addEventListener("click", remove);
+                function remove() {
+                    newElement.remove();
+                }
+               
+
+
+
+
+            }
+        }
+    
+    </script>
+</body>
+</html>
